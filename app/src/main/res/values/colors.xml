@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="avatar_color_1">#FF6366F1</color>
+    <color name="avatar_color_2">#FF8B5CF6</color>
+    <color name="avatar_color_3">#FFEC4899</color>
+    <color name="avatar_color_4">#FF14B8A6</color>
+    <color name="avatar_color_5">#FFF59E0B</color>
+    <color name="avatar_color_6">#FF3B82F6</color>
+
+    <color name="common_page_bg">#FFF5F7FA</color>
+    <color name="common_card_bg">#FFFFFFFF</color>
+    <color name="common_text_primary">#FF1A1A2E</color>
+    <color name="common_text_secondary">#FF6B7280</color>
+    <color name="login_page_bg">#FFF7FAFC</color>
+    <color name="login_card_stroke">#FFE5E7EB</color>
+    <color name="login_primary">#FF2563EB</color>
+    <color name="login_primary_dark">#FF0F766E</color>
+
+    <color name="dashboard_section_title">#FF334155</color>
+    <color name="common_area_bg">#FFEEF2FF</color>
+    <color name="dashboard_item_bg">#FFFFFFFF</color>
+    <color name="dashboard_item_border_default">#FFE2E8F0</color>
+    <color name="dashboard_item_border_red">#FFEF4444</color>
+    <color name="dashboard_item_border_blue">#FF3B82F6</color>
+    <color name="dashboard_item_border_green">#FF22C55E</color>
+
+    <color name="diary_key_digit_bg">#FFFFFFFF</color>
+    <color name="diary_key_stroke">#FFE5E7EB</color>
+    <color name="diary_key_zodiac_bg">#FFFFF7ED</color>
+    <color name="diary_key_zodiac_text">#FF92400E</color>
+    <color name="diary_key_zodiac_stroke">#FFFDE68A</color>
+    <color name="diary_key_operator_bg">#FFEEF2FF</color>
+    <color name="diary_key_delete_stroke">#FFFCA5A5</color>
+    <color name="diary_key_delete_text">#FFDC2626</color>
+</resources>

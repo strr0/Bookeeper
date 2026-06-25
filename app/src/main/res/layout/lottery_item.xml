@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="@dimen/dashboard_lottery_size"
+        android:layout_height="@dimen/dashboard_lottery_size"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        app:cardBackgroundColor="@color/dashboard_item_bg"
+        app:cardCornerRadius="@dimen/dashboard_lottery_size"
+        app:cardElevation="2dp"
+        app:strokeColor="@color/dashboard_item_border_default"
+        app:strokeWidth="@dimen/dashboard_lottery_stroke">
+
+    <TextView
+            android:id="@+id/lottery_value"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/common_text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+</com.google.android.material.card.MaterialCardView>

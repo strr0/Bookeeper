@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/common_page_bg"
+        android:padding="16dp"
+        tools:context=".ui.fragment.DiaryEditFragment">
+
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/diary_display_card"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/diary_display_card_height"
+            app:cardBackgroundColor="@color/common_card_bg"
+            app:cardCornerRadius="@dimen/common_card_radius"
+            app:cardElevation="2dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/diary_input_label"
+                        android:textColor="@color/common_text_secondary"
+                        android:textSize="14sp"/>
+
+                <com.google.android.material.chip.Chip
+                        android:id="@+id/diary_area_chip"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="false"
+                        android:clickable="false"
+                        android:text="@string/common_area_hk"
+                        app:chipBackgroundColor="@color/diary_key_operator_bg"
+                        app:chipStrokeWidth="0dp"
+                        app:textEndPadding="12dp"
+                        app:textStartPadding="12dp"/>
+            </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                    android:id="@+id/diary_display_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="12dp"
+                    android:fillViewport="true">
+
+                <TextView
+                        android:id="@+id/diary_display"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end|center_vertical"
+                        android:text="0"
+                        android:textColor="@color/common_text_primary"
+                        android:textSize="36sp"
+                        android:textStyle="bold"/>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+            android:id="@+id/diary_action_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/diary_edit_section_gap"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/diary_display_card">
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/diary_change"
+                style="@style/DiaryKey.Action"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/diary_key_height"
+                android:layout_marginEnd="@dimen/diary_key_gap"
+                android:layout_weight="1"
+                android:text="@string/diary_change" />
+
+        <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/diary_key_gap"
+                android:layout_weight="1"
+                android:text="@string/diary_select">
+            <AutoCompleteTextView
+                    android:id="@+id/diary_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/diary_key_height"
+                    android:inputType="none"
+                    android:hint="@string/diary_select_label"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/clear_entity"
+                style="@style/DiaryKey.Action.Delete"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/diary_key_height"
+                android:layout_weight="1"
+                android:text="@string/clear_entity" />
+    </LinearLayout>
+
+    <FrameLayout
+            android:id="@+id/diary_keypad_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/diary_edit_section_gap"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/diary_action_row">
+
+        <GridLayout
+                android:id="@+id/keypad_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alignmentMode="alignBounds"
+                android:columnCount="4"
+                android:rowCount="4">
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_7"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_7"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_8"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_8"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_9"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_9"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/separator"
+                    style="@style/DiaryKey.Operator"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/separator"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_4"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_4"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_5"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_5"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_6"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_6"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/multiply"
+                    style="@style/DiaryKey.Operator"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/multiply"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_1"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_1"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_2"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_2"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_3"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_3"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/enter"
+                    style="@style/DiaryKey.Operator"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/enter"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/digit_0"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnSpan="2"
+                    android:layout_columnWeight="2"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/digit_0"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dec_point"
+                    style="@style/DiaryKey.Digit"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/dec_point"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/confirm"
+                    style="@style/DiaryKey.Confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/confirm"/>
+        </GridLayout>
+
+        <GridLayout
+                android:id="@+id/keypad_zodiac"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alignmentMode="alignBounds"
+                android:columnCount="4"
+                android:rowCount="4"
+                android:visibility="gone">
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_rat"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_rat"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_ox"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_ox"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_tiger"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_tiger"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_separator"
+                    style="@style/DiaryKey.Operator"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/separator"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_rabbit"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_rabbit"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_dragon"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_dragon"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_snake"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_snake"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_multiply"
+                    style="@style/DiaryKey.Operator"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/multiply"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_horse"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_horse"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_goat"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_goat"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_monkey"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_monkey"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_enter"
+                    style="@style/DiaryKey.Operator"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/enter"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_rooster"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_rooster"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_dog"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_dog"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_pig"
+                    style="@style/DiaryKey.Zodiac"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/zodiac_pig"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zodiac_confirm"
+                    style="@style/DiaryKey.Confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="@dimen/diary_key_gap"
+                    android:layout_rowWeight="1"
+                    android:text="@string/confirm"/>
+        </GridLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

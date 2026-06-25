@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/common_page_bg"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        tools:context=".ui.fragment.ProfileFragment">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/profile_wrapper_padding"
+            android:paddingTop="@dimen/profile_wrapper_padding"
+            android:paddingBottom="?attr/actionBarSize">
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/common_card_bg"
+                app:cardCornerRadius="@dimen/common_card_radius"
+                app:cardElevation="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                <TextView
+                        android:id="@+id/profile_avatar"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/bg_common_avatar"
+                        android:gravity="center"
+                        android:text="@string/profile_avatar"
+                        android:textColor="@color/white"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                        android:id="@+id/profile_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/profile_name"
+                        android:textColor="@color/common_text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="@id/profile_avatar"
+                        app:layout_constraintStart_toEndOf="@id/profile_avatar"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                        android:id="@+id/profile_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="6dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@string/profile_remarks"
+                        android:textColor="@color/common_text_secondary"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toBottomOf="@id/profile_name"
+                        app:layout_constraintStart_toEndOf="@id/profile_avatar"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                        android:id="@+id/profile_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="@string/profile_edit"
+                        android:textColor="@color/purple_500"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/profile_desc"
+                        app:layout_constraintStart_toStartOf="@id/profile_name"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_item_margin"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="84dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@color/common_card_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/common_text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/month_bill"
+                        android:textColor="@color/common_text_secondary"
+                        android:textSize="13sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="84dp"
+                    android:layout_marginHorizontal="6dp"
+                    android:background="@color/common_card_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/common_text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/month_income"
+                        android:textColor="@color/common_text_secondary"
+                        android:textSize="13sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="84dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@color/common_card_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/common_text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/month_expend"
+                        android:textColor="@color/common_text_secondary"
+                        android:textSize="13sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/my_services"
+                android:textColor="@color/dashboard_section_title"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/common_card_bg"
+                app:cardCornerRadius="@dimen/common_card_radius"
+                app:cardElevation="1dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <include android:id="@+id/contact_manage" layout="@layout/profile_menu_row_contact"/>
+                <include android:id="@+id/rule_manage" layout="@layout/profile_menu_row_rule"/>
+                <include layout="@layout/profile_menu_row_setting"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

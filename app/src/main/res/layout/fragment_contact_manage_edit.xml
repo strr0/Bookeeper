@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/common_page_bg"
+        android:fillViewport="true"
+        tools:context=".ui.fragment.ContactManageEditFragment">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp">
+
+            <TextView
+                    android:id="@+id/contact_manage_edit_avatar"
+                    android:layout_width="@dimen/common_edit_avatar_size"
+                    android:layout_height="@dimen/common_edit_avatar_size"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_common_avatar"
+                    android:gravity="center"
+                    android:text="?"
+                    android:textColor="@color/white"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    tools:text=""/>
+        </FrameLayout>
+
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/common_card_bg"
+                app:cardCornerRadius="@dimen/common_card_radius"
+                app:cardElevation="2dp"
+                app:contentPadding="20dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/contact_name_hint"
+                        app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/contact_manage_edit_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:maxLines="1"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="@string/contact_phone_hint"
+                        app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/contact_manage_edit_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
+                            android:maxLines="1"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="@string/contact_balance_hint"
+                        app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/contact_manage_edit_balance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="@string/contact_remarks_hint"
+                        app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/contact_manage_edit_remarks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLines="1"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/contact_manage_more_config_toggle"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                android:text="@string/contact_more_config"
+                android:textColor="@color/common_text_secondary"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_chevron_right"
+                app:iconGravity="end"
+                app:iconTint="@color/common_text_secondary"/>
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/contact_manage_more_config_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/common_card_bg"
+                app:cardCornerRadius="@dimen/common_card_radius"
+                app:cardElevation="2dp"
+                app:contentPadding="20dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/contact_manage_rule_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="@dimen/common_item_spacing"
+                    android:nestedScrollingEnabled="true"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/contact_manage_save"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/contact_save"
+                android:textSize="16sp"
+                app:backgroundTint="@color/purple_500"
+                app:cornerRadius="@dimen/common_card_radius"/>
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/contact_manage_delete"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/contact_delete"
+                android:textColor="#FFDC2626"
+                android:textSize="16sp"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/common_card_radius"
+                app:strokeColor="#FFDC2626"/>
+
+        <EditText
+                android:id="@+id/contact_manage_edit_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

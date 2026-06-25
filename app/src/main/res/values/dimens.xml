@@ -1,0 +1,34 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="common_list_padding">12dp</dimen>
+    <dimen name="common_item_spacing">8dp</dimen>
+    <dimen name="common_item_margin">4dp</dimen>
+    <dimen name="common_avatar_size">48dp</dimen>
+    <dimen name="common_card_radius">12dp</dimen>
+    <dimen name="common_edit_avatar_size">96dp</dimen>
+    <dimen name="common_query_height">48dp</dimen>
+    <dimen name="common_query_margin">12dp</dimen>
+
+    <dimen name="dashboard_section_padding">12dp</dimen>
+    <dimen name="dashboard_section_padding_top">8dp</dimen>
+    <dimen name="dashboard_section_item_padding_top">10dp</dimen>
+    <dimen name="dashboard_section_item_padding_bottom">18dp</dimen>
+    <dimen name="dashboard_lottery_size">42dp</dimen>
+    <dimen name="dashboard_lottery_stroke">2dp</dimen>
+    <dimen name="dashboard_square_size">50dp</dimen>
+    <dimen name="dashboard_square_margin">5dp</dimen>
+    <dimen name="dashboard_square_stroke">1dp</dimen>
+
+    <dimen name="diary_key_height">56dp</dimen>
+    <dimen name="diary_key_radius">12dp</dimen>
+    <dimen name="diary_key_gap">6dp</dimen>
+    <dimen name="diary_display_min_height">100dp</dimen>
+    <dimen name="diary_display_card_height">240dp</dimen>
+    <dimen name="diary_edit_section_gap">12dp</dimen>
+
+    <dimen name="profile_wrapper_padding">12dp</dimen>
+    <dimen name="profile_item_margin">12dp</dimen>
+</resources>
