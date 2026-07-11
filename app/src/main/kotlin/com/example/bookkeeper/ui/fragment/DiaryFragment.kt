@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkeeper.R
+import com.example.bookkeeper.data.model.AmsAccount
 import com.example.bookkeeper.databinding.FragmentDiaryBinding
+import com.example.bookkeeper.ui.adapter.CommonSpinnerAdapter
 import com.example.bookkeeper.ui.adapter.DiaryAdapter
+import com.example.bookkeeper.ui.common.AppConstants
 import com.example.bookkeeper.ui.viewmodel.DiaryViewModel
 import com.example.bookkeeper.util.DateUtil
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -51,13 +54,47 @@ class DiaryFragment : Fragment() {
             }
         }
 
-        val adapter = DiaryAdapter(requireContext())
-        binding.diaryList.adapter = adapter
+        val accountAdapter = CommonSpinnerAdapter<AmsAccount>(requireContext(), { it.id }, { it.name }, emptyList())
+        binding.diaryAccount.setAdapter(accountAdapter)
+        binding.diaryAccount.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p: AdapterView<*>?, v: View?, pos: Int, id: Long) {
+                diaryViewModel.selectedAccount.value = accountAdapter.getItem(pos).id
+            }
+            override fun onNothingSelected(p: AdapterView<*>?) {}
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                diaryViewModel.accounts.collect { records ->
+                    accountAdapter.setRecords(records)
+                    accountAdapter.notifyDataSetChanged()
+                }
+            }
+        }
+
+        val areaAdapter = CommonSpinnerAdapter<AppConstants.Area>(requireContext(), { it.id }, { it.text }, AppConstants.Area.entries)
+        binding.diaryArea.setAdapter(areaAdapter)
+        binding.diaryArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p: AdapterView<*>?, v: View?, pos: Int, id: Long) {
+                diaryViewModel.selectedArea.value = areaAdapter.getItem(pos).code
+            }
+            override fun onNothingSelected(p: AdapterView<*>?) {}
+        }
+
+        val diaryAdapter = DiaryAdapter(requireContext())
+        binding.diaryList.adapter = diaryAdapter
+        diaryAdapter.setOnChevronClickListener { billId ->
+            val bundle = Bundle().apply {
+                putInt("billId", billId)
+            }
+            findNavController(binding.root).navigate(R.id.navigation_diary_detail, bundle)
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 diaryViewModel.bills.collect { records ->
-                    adapter.setRecords(records)
-                    adapter.notifyDataSetChanged()
+                    diaryAdapter.setRecords(records)
+                    diaryAdapter.notifyDataSetChanged()
                     binding.diaryEmpty.visibility = if (records.isEmpty()) View.VISIBLE else View.GONE
                     binding.diaryList.visibility = if (records.isEmpty()) View.GONE else View.VISIBLE
                 }

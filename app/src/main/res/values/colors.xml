@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="orange">#FFFFA500</color>
+    <color name="green">#FF14B8A6</color>
+
     <color name="avatar_color_1">#FF6366F1</color>
     <color name="avatar_color_2">#FF8B5CF6</color>
     <color name="avatar_color_3">#FFEC4899</color>

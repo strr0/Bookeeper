@@ -10,10 +10,10 @@ import android.widget.Filterable
 import android.widget.TextView
 
 class CommonSpinnerAdapter<T>(context: Context?, private val itemIdGetter: (T) -> Number?,
-                              private val itemTextGetter: (T) -> String?
+                              private val itemTextGetter: (T) -> String?, records: List<T>
 ) : BaseAdapter(), Filterable {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var records: MutableList<T> = ArrayList()
+    private var records: MutableList<T> = records.toMutableList()
     private var filter: ArrayFilter = ArrayFilter()
 
     fun setRecords(records: List<T>) {

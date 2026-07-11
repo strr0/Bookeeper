@@ -106,7 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/diary_key_height"
                     android:inputType="none"
-                    android:hint="@string/diary_select_label"/>
+                    android:hint="@string/diary_account_label"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton

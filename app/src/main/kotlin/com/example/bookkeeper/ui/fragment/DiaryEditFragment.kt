@@ -126,9 +126,8 @@ class DiaryEditFragment : Fragment() {
     private fun bindSpinner() {
         val diaryViewModel: DiaryViewModel by viewModels { DiaryViewModel.Factory }
 
-        val diarySelect = binding.diarySelect
-        val adapter = CommonSpinnerAdapter<AmsAccount>(requireContext(), { it.id }, { it.name })
-        diarySelect.setAdapter(adapter)
+        val adapter = CommonSpinnerAdapter<AmsAccount>(requireContext(), { it.id }, { it.name }, emptyList())
+        binding.diarySelect.setAdapter(adapter)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

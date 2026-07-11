@@ -21,18 +21,22 @@
 
     <string name="title_diary">账单</string>
     <string name="title_diary_edit">编辑账单</string>
+    <string name="title_diary_detail">账单详情</string>
     <string name="diary_empty">暂无账单\n点击右下角按钮添加</string>
     <string name="diary_name_hint">姓名</string>
     <string name="diary_amount_hint">金额</string>
     <string name="diary_save">保存</string>
-    <string name="diary_add">添加联系人</string>
+    <string name="diary_add">添加账单</string>
+    <string name="diary_detail_receive">收</string>
+    <string name="diary_detail_send">报</string>
     <string name="diary_amount_empty">未填写金额</string>
     <string name="diary_content_empty_tip">内容不能为空</string>
     <string name="diary_content_format_tip">格式不正确</string>
     <string name="diary_change">切换生肖</string>
     <string name="diary_change_to_number">切换数字</string>
-    <string name="diary_select_label">联系人</string>
     <string name="diary_select">选择</string>
+    <string name="diary_account_label">联系人</string>
+    <string name="diary_area_label">区域</string>
     <string name="diary_mode_number">数字</string>
     <string name="diary_mode_zodiac">生肖</string>
     <string name="diary_input_label">当前输入</string>

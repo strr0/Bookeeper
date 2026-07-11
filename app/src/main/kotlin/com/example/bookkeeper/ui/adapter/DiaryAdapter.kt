@@ -16,10 +16,15 @@ class DiaryAdapter(context: Context?) : RecyclerView.Adapter<DiaryAdapter.ViewHo
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private val appContext: Context = context!!.applicationContext
     private val records: MutableList<BmsBillVo> = ArrayList()
+    private var onChevronClickListener: ((Int) -> Unit)? = null
 
     fun setRecords(records: List<BmsBillVo>) {
         this.records.clear()
         this.records.addAll(records)
+    }
+
+    fun setOnChevronClickListener(listener: (Int) -> Unit) {
+        onChevronClickListener = listener
     }
 
     override fun getItemCount(): Int = records.size
@@ -33,10 +38,13 @@ class DiaryAdapter(context: Context?) : RecyclerView.Adapter<DiaryAdapter.ViewHo
         val record = records[position]
         holder.accName.text = record.accName.orEmpty()
         holder.remarks.text = record.remarks.orEmpty()
-        holder.amount.text = record.amount?.stripTrailingZeros()?.toPlainString().orEmpty()
-        holder.updateTime.text = DateUtil.formatDateTime(record.updateTime)
+        holder.amount.text = record.amount?.stripTrailingZeros()?.toPlainString() ?: "0.00"
+        holder.updateTime.text = record.updateTime?.let { DateUtil.formatDateTime(it) }.orEmpty()
         holder.area.setText(if (record.area.equals("hk")) R.string.common_area_hk else R.string.common_area_mo)
         AvatarUi.bindAvatar(appContext, holder.avatar, record.accName)
+        holder.chevron.setOnClickListener {
+            onChevronClickListener?.invoke(record.id)
+        }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -46,5 +54,6 @@ class DiaryAdapter(context: Context?) : RecyclerView.Adapter<DiaryAdapter.ViewHo
         val amount: TextView = view.findViewById(R.id.diary_amount)
         val updateTime: TextView = view.findViewById(R.id.diary_time)
         val area: Chip = view.findViewById(R.id.diary_area_chip)
+        val chevron: View = view.findViewById(R.id.diary_chevron)
     }
 }

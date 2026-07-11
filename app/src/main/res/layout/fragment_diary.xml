@@ -9,21 +9,67 @@
         tools:context=".ui.fragment.DiaryFragment"
         android:paddingBottom="?attr/actionBarSize">
 
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/diary_date_btn"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/diary_query_wrapper"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="@string/common_date_select"
-            android:textColor="@color/common_text_primary"
-            android:textSize="16sp"
-            app:icon="@android:drawable/ic_menu_my_calendar"
-            app:iconGravity="start"
-            app:iconTint="@color/common_text_secondary"
-            app:strokeColor="@color/common_text_secondary"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/diary_date_btn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="@dimen/diary_key_gap"
+                android:text="@string/common_date_select"
+                android:textColor="@color/common_text_primary"
+                android:textSize="16sp"
+                app:icon="@android:drawable/ic_menu_my_calendar"
+                app:iconGravity="start"
+                app:iconTint="@color/common_text_secondary"
+                app:strokeColor="@color/common_text_secondary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/diary_account_text"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/diary_account_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="@dimen/diary_key_gap"
+                android:layout_weight="1"
+                android:text="@string/diary_select"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/diary_area_text">
+            <AutoCompleteTextView
+                    android:id="@+id/diary_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="none"
+                    android:hint="@string/diary_account_label"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/diary_area_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="@dimen/diary_key_gap"
+                android:layout_weight="1"
+                android:text="@string/diary_select"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            <AutoCompleteTextView
+                    android:id="@+id/diary_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="none"
+                    android:hint="@string/diary_area_label"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/diary_list"
@@ -36,7 +82,7 @@
             android:paddingBottom="88dp"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/diary_date_btn"
+            app:layout_constraintTop_toBottomOf="@+id/diary_query_wrapper"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -51,7 +97,7 @@
             android:textColor="@color/common_text_secondary"
             android:textSize="16sp"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/diary_date_btn"
+            app:layout_constraintTop_toBottomOf="@+id/diary_query_wrapper"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
