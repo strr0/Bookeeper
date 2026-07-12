@@ -29,6 +29,11 @@ class UmsUser {
     var password: String? = null
 
     /**
+     * 盐值
+     */
+    var salt: String? = null
+
+    /**
      * 备注
      */
     var remarks: String? = null

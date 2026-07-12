@@ -10,6 +10,8 @@
     <string name="login_button">登录</string>
     <string name="login_username_empty_tip">请输入账号</string>
     <string name="login_password_empty_tip">请输入密码</string>
+    <string name="login_invalid_credentials_tip">账号或密码错误</string>
+    <string name="login_logging">登录中…</string>
 
     <string name="common_date_select">选择日期</string>
     <string name="title_dashboard">浏览</string>

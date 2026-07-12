@@ -10,7 +10,9 @@ import com.example.bookkeeper.data.converter.DateConverter
 import com.example.bookkeeper.data.model.*
 
 @Database(
-    entities = [AmsAccount::class, AmsAccountDetail::class, BmsBill::class, BmsBillDetail::class, DmsDigit::class, DmsZodiac::class, LmsLottery::class, LmsLotteryDetail::class, RmsRule::class, RmsRuleRel::class],
+    entities = [AmsAccount::class, AmsAccountDetail::class, BmsBill::class, BmsBillDetail::class,
+        DmsDigit::class, DmsZodiac::class, LmsLottery::class, LmsLotteryDetail::class,
+        RmsRule::class, RmsRuleRel::class, UmsUser::class],
     version = 1,
     exportSchema = false
 )
@@ -24,6 +26,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun dmsDigitDao(): DmsDigitDao?
     abstract fun lmsLotteryDao(): LmsLotteryDao?
     abstract fun rmsRuleDao(): RmsRuleDao?
+    abstract fun umsUserDao(): UmsUserDao?
 
     companion object {
         private const val DATABASE_FILE_PATH = "database/bookkeeper.db"

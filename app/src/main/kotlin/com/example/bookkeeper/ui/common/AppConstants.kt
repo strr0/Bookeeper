@@ -4,6 +4,10 @@ interface AppConstants {
     companion object {
         const val PREFS_NAME: String = "bookkeeper_prefs"
         const val KEY_IS_LOGGED_IN: String = "is_logged_in"
+        const val KEY_LAST_USERNAME: String = "last_username"
+        const val KEY_CURRENT_USER_ID: String = "current_user_id"
+        const val KEY_REMEMBER_ME: String = "remember_me"
+
 
         val ZODIAC: List<String> = listOf("rat", "ox", "tiger", "rabbit", "dragon", "snake", "horse", "goat", "monkey", "rooster", "dog", "pig")
 
