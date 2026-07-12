@@ -71,12 +71,16 @@
     <string name="confirm">✔</string>
 
     <string name="title_contact">联系人</string>
+    <string name="title_contact_detail">联系人详情</string>
     <string name="title_contact_edit">编辑联系人</string>
     <string name="contact_empty">暂无联系人\n点击右下角按钮添加</string>
     <string name="contact_name_hint">姓名</string>
     <string name="contact_name_empty_tip">姓名不能为空</string>
     <string name="contact_phone_hint">电话</string>
     <string name="contact_balance_hint">余额</string>
+    <string name="contact_balance_label">收支</string>
+    <string name="contact_balance_income">赚</string>
+    <string name="contact_balance_expend">欠</string>
     <string name="contact_remarks_hint">备注</string>
     <string name="contact_save">保存</string>
     <string name="contact_save_success">保存成功</string>

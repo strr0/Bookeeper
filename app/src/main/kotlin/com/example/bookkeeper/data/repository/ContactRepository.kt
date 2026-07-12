@@ -23,4 +23,6 @@ class ContactRepository(application: Application) {
     suspend fun updateAccount(record: AmsAccount) = amsAccountDao.updateAccount(record)
 
     suspend fun removeAccount(record: AmsAccount) = amsAccountDao.removeAccount(record)
+
+    fun listAccountDetails(accId: Int) = amsAccountDao.listAccountDetails(accId)
 }

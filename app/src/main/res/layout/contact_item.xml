@@ -44,8 +44,7 @@
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/contact_avatar"
-                app:layout_constraintEnd_toStartOf="@+id/contact_chevron"
-                app:layout_constraintBottom_toTopOf="@+id/contact_phone"
+                app:layout_constraintEnd_toStartOf="@+id/contact_balance_label"
                 app:layout_constraintVertical_chainStyle="packed"/>
 
         <TextView
@@ -60,6 +59,51 @@
                 android:textColor="@color/common_text_secondary"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/contact_name"
+                app:layout_constraintStart_toEndOf="@+id/contact_avatar"
+                app:layout_constraintEnd_toStartOf="@+id/contact_balance_label"/>
+
+        <TextView
+                android:id="@+id/contact_balance"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/common_text_secondary"
+                android:textSize="30sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/contact_chevron"/>
+
+        <TextView
+                android:id="@+id/contact_balance_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_balance_label"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/common_text_secondary"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="@+id/contact_balance"
+                app:layout_constraintEnd_toStartOf="@+id/contact_balance"/>
+
+        <TextView
+                android:id="@+id/contact_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/common_text_secondary"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/contact_phone"
                 app:layout_constraintStart_toEndOf="@+id/contact_avatar"
                 app:layout_constraintEnd_toStartOf="@+id/contact_chevron"
                 app:layout_constraintBottom_toBottomOf="parent"/>

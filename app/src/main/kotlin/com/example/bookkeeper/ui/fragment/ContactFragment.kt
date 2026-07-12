@@ -2,14 +2,16 @@ package com.example.bookkeeper.ui.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.*
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.Navigation.findNavController
+import com.example.bookkeeper.R
 import com.example.bookkeeper.databinding.FragmentContactBinding
 import com.example.bookkeeper.ui.adapter.ContactAdapter
 import com.example.bookkeeper.ui.viewmodel.ContactViewModel
@@ -34,7 +36,10 @@ class ContactFragment : Fragment() {
         val adapter = ContactAdapter(requireContext())
         binding.contactList.adapter = adapter
         adapter.setOnChevronClickListener { record ->
-            Toast.makeText(activity, record.name, Toast.LENGTH_LONG).show()
+            val bundle = Bundle().apply {
+                putInt("accId", record.id)
+            }
+            findNavController(binding.root).navigate(R.id.navigation_contact_detail, bundle)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

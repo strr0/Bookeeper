@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_diary_edit,
                 R.id.navigation_diary_detail,
                 R.id.navigation_contact,
+                R.id.navigation_contact_detail,
                 R.id.navigation_profile,
                 R.id.navigation_contact_manage,
                 R.id.navigation_contact_manage_edit,

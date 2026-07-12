@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bookkeeper.R
 import com.example.bookkeeper.data.model.AmsAccount
 import com.example.bookkeeper.ui.common.AvatarUi
+import com.example.bookkeeper.util.DateUtil
 
 class ContactAdapter(context: Context?) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
@@ -41,6 +42,8 @@ class ContactAdapter(context: Context?) : RecyclerView.Adapter<ContactAdapter.Vi
         } else {
             phone
         }
+        holder.balance.text = record.balance?.stripTrailingZeros()?.toPlainString() ?: "0.00"
+        holder.updateTime.text = record.updateTime?.let { DateUtil.formatDateTime(it) }.orEmpty()
         AvatarUi.bindAvatar(appContext, holder.avatar, record.name)
         holder.chevron.setOnClickListener {
             onChevronClickListener?.invoke(record)
@@ -51,6 +54,8 @@ class ContactAdapter(context: Context?) : RecyclerView.Adapter<ContactAdapter.Vi
         val avatar: TextView = view.findViewById(R.id.contact_avatar)
         val name: TextView = view.findViewById(R.id.contact_name)
         val phone: TextView = view.findViewById(R.id.contact_phone)
+        val balance: TextView = view.findViewById(R.id.contact_balance)
+        val updateTime: TextView = view.findViewById(R.id.contact_time)
         val chevron: View = view.findViewById(R.id.contact_chevron)
     }
 }

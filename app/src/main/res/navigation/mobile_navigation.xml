@@ -36,6 +36,12 @@
             tools:layout="@layout/fragment_contact"/>
 
     <fragment
+            android:id="@+id/navigation_contact_detail"
+            android:name="com.example.bookkeeper.ui.fragment.ContactDetailFragment"
+            android:label="@string/title_contact_detail"
+            tools:layout="@layout/fragment_contact_detail"/>
+
+    <fragment
             android:id="@+id/navigation_contact_manage"
             android:name="com.example.bookkeeper.ui.fragment.ContactManageFragment"
             android:label="@string/title_contact"

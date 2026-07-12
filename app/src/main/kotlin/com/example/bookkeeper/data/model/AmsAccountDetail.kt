@@ -21,6 +21,11 @@ class AmsAccountDetail {
     var accId: Int? = null
 
     /**
+     * 地区
+     */
+    var area: String? = null
+
+    /**
      * 金额
      */
     var amount: BigDecimal? = null
