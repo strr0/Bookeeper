@@ -1,174 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/dashboard_swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/common_page_bg"
-        android:fillViewport="true"
-        android:scrollbars="none"
         tools:context=".ui.fragment.DashboardFragment">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="?attr/actionBarSize">
+            android:layout_height="match_parent"
+            android:background="@color/common_page_bg"
+            android:fillViewport="true"
+            android:scrollbars="none">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/common_query_height"
-                android:layout_marginBottom="@dimen/common_query_margin">
-
-            <com.google.android.material.button.MaterialButton
-                    android:id="@+id/dashboard_date_btn"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="@string/common_date_select"
-                    android:textColor="@color/common_text_primary"
-                    android:textSize="16sp"
-                    app:icon="@android:drawable/ic_menu_my_calendar"
-                    app:iconGravity="start"
-                    app:iconTint="@color/common_text_secondary"
-                    app:strokeColor="@color/common_text_secondary"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/dashboard_area_chip"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <com.google.android.material.chip.Chip
-                    android:id="@+id/dashboard_area_chip"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:checkable="false"
-                    android:clickable="false"
-                    android:text="@string/common_area_hk"
-                    app:chipBackgroundColor="@color/common_area_bg"
-                    app:chipStrokeWidth="0dp"
-                    app:textEndPadding="12dp"
-                    app:textStartPadding="12dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/common_item_margin"
-                app:cardBackgroundColor="@color/common_card_bg"
-                app:cardCornerRadius="@dimen/common_card_radius"
-                app:cardElevation="1dp">
+                android:orientation="vertical"
+                android:paddingBottom="?attr/actionBarSize">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_query_height"
+                    android:layout_marginBottom="@dimen/common_query_margin">
+
+                <com.google.android.material.button.MaterialButton
+                        android:id="@+id/dashboard_date_btn"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/common_date_select"
+                        android:textColor="@color/common_text_primary"
+                        android:textSize="16sp"
+                        app:icon="@android:drawable/ic_menu_my_calendar"
+                        app:iconGravity="start"
+                        app:iconTint="@color/common_text_secondary"
+                        app:strokeColor="@color/common_text_secondary"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/dashboard_area_chip"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <com.google.android.material.chip.Chip
+                        android:id="@+id/dashboard_area_chip"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:checkable="false"
+                        android:clickable="false"
+                        android:text="@string/common_area_hk"
+                        app:chipBackgroundColor="@color/common_area_bg"
+                        app:chipStrokeWidth="0dp"
+                        app:textEndPadding="12dp"
+                        app:textStartPadding="12dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingTop="@dimen/dashboard_section_padding_top"
-                    android:paddingHorizontal="@dimen/dashboard_section_padding">
+                    android:layout_marginHorizontal="@dimen/common_item_margin"
+                    app:cardBackgroundColor="@color/common_card_bg"
+                    app:cardCornerRadius="@dimen/common_card_radius"
+                    app:cardElevation="1dp">
 
-                <TextView
-                        android:id="@+id/text_lottery"
+                <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textColor="@color/dashboard_section_title"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:text="@string/title_lottery"/>
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/dashboard_section_padding_top"
+                        android:paddingHorizontal="@dimen/dashboard_section_padding">
 
-                <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/lottery_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/dashboard_section_item_padding_top"
-                        android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"
-                        android:clipToPadding="false"
-                        android:nestedScrollingEnabled="false"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:spanCount="7"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                            android:id="@+id/text_lottery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/dashboard_section_title"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:text="@string/title_lottery"/>
 
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_item_spacing"
-                android:layout_marginHorizontal="@dimen/common_item_margin"
-                app:cardBackgroundColor="@color/common_card_bg"
-                app:cardCornerRadius="@dimen/common_card_radius"
-                app:cardElevation="1dp">
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lottery_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/dashboard_section_item_padding_top"
+                            android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"
+                            android:clipToPadding="false"
+                            android:nestedScrollingEnabled="false"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:spanCount="7"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingTop="@dimen/dashboard_section_padding_top"
-                    android:paddingHorizontal="@dimen/dashboard_section_padding">
+                    android:layout_marginTop="@dimen/common_item_spacing"
+                    android:layout_marginHorizontal="@dimen/common_item_margin"
+                    app:cardBackgroundColor="@color/common_card_bg"
+                    app:cardCornerRadius="@dimen/common_card_radius"
+                    app:cardElevation="1dp">
 
-                <TextView
-                        android:id="@+id/text_digit"
+                <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textColor="@color/dashboard_section_title"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:text="@string/title_digit"/>
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/dashboard_section_padding_top"
+                        android:paddingHorizontal="@dimen/dashboard_section_padding">
 
-                <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/digit_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/dashboard_section_item_padding_top"
-                        android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"
-                        android:clipToPadding="false"
-                        android:nestedScrollingEnabled="false"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:spanCount="6"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                            android:id="@+id/text_digit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/dashboard_section_title"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:text="@string/title_digit"/>
 
-        <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_item_spacing"
-                android:layout_marginHorizontal="@dimen/common_item_margin"
-                app:cardBackgroundColor="@color/common_card_bg"
-                app:cardCornerRadius="@dimen/common_card_radius"
-                app:cardElevation="1dp">
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/digit_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/dashboard_section_item_padding_top"
+                            android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"
+                            android:clipToPadding="false"
+                            android:nestedScrollingEnabled="false"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:spanCount="6"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingTop="@dimen/dashboard_section_padding_top"
-                    android:paddingHorizontal="@dimen/dashboard_section_padding">
+                    android:layout_marginTop="@dimen/common_item_spacing"
+                    android:layout_marginHorizontal="@dimen/common_item_margin"
+                    app:cardBackgroundColor="@color/common_card_bg"
+                    app:cardCornerRadius="@dimen/common_card_radius"
+                    app:cardElevation="1dp">
 
-                <TextView
-                        android:id="@+id/text_zodiac"
+                <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textColor="@color/dashboard_section_title"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:text="@string/title_zodiac"/>
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/dashboard_section_padding_top"
+                        android:paddingHorizontal="@dimen/dashboard_section_padding">
 
-                <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/zodiac_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/dashboard_section_item_padding_top"
-                        android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"
-                        android:clipToPadding="false"
-                        android:nestedScrollingEnabled="false"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:spanCount="6"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+                    <TextView
+                            android:id="@+id/text_zodiac"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@color/dashboard_section_title"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:text="@string/title_zodiac"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/zodiac_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/dashboard_section_item_padding_top"
+                            android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"
+                            android:clipToPadding="false"
+                            android:nestedScrollingEnabled="false"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:spanCount="6"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

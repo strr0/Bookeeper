@@ -98,6 +98,10 @@ class DashboardFragment : Fragment() {
             }
         }
 
+        binding.dashboardSwipeRefresh.setOnRefreshListener {
+            binding.dashboardSwipeRefresh.isRefreshing = false
+        }
+
         return root
     }
 

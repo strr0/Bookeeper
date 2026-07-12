@@ -49,8 +49,13 @@ class ContactFragment : Fragment() {
                     adapter.notifyDataSetChanged()
                     binding.contactEmpty.visibility = if (records.isEmpty()) View.VISIBLE else View.GONE
                     binding.contactList.visibility = if (records.isEmpty()) View.GONE else View.VISIBLE
+                    binding.contactSwipeRefresh.isRefreshing = false
                 }
             }
+        }
+
+        binding.contactSwipeRefresh.setOnRefreshListener {
+            binding.contactSwipeRefresh.isRefreshing = false
         }
 
         return root

@@ -89,7 +89,7 @@ class CommonSpinnerAdapter<T>(context: Context?, private val itemIdGetter: (T) -
             return results
         }
 
-        override fun publishResults(constraint: CharSequence, results: FilterResults) {
+        override fun publishResults(constraint: CharSequence?, results: FilterResults) {
             records = results.values as MutableList<T>
             if (results.count > 0) {
                 notifyDataSetChanged()

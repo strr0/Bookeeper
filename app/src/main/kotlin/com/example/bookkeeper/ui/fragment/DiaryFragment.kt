@@ -56,11 +56,8 @@ class DiaryFragment : Fragment() {
 
         val accountAdapter = CommonSpinnerAdapter<AmsAccount>(requireContext(), { it.id }, { it.name }, emptyList())
         binding.diaryAccount.setAdapter(accountAdapter)
-        binding.diaryAccount.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p: AdapterView<*>?, v: View?, pos: Int, id: Long) {
-                diaryViewModel.selectedAccount.value = accountAdapter.getItem(pos).id
-            }
-            override fun onNothingSelected(p: AdapterView<*>?) {}
+        binding.diaryAccount.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            diaryViewModel.selectedAccount.value = accountAdapter.getItem(position).id
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -74,11 +71,8 @@ class DiaryFragment : Fragment() {
 
         val areaAdapter = CommonSpinnerAdapter<AppConstants.Area>(requireContext(), { it.id }, { it.text }, AppConstants.Area.entries)
         binding.diaryArea.setAdapter(areaAdapter)
-        binding.diaryArea.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p: AdapterView<*>?, v: View?, pos: Int, id: Long) {
-                diaryViewModel.selectedArea.value = areaAdapter.getItem(pos).code
-            }
-            override fun onNothingSelected(p: AdapterView<*>?) {}
+        binding.diaryArea.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            diaryViewModel.selectedArea.value = areaAdapter.getItem(position).code
         }
 
         val diaryAdapter = DiaryAdapter(requireContext())
@@ -103,6 +97,14 @@ class DiaryFragment : Fragment() {
 
         binding.diaryAdd.setOnClickListener { v: View ->
             findNavController(v).navigate(R.id.navigation_diary_edit)
+        }
+
+        binding.diarySwipeRefresh.setOnRefreshListener {
+            diaryViewModel.selectedAccount.value = 0
+            diaryViewModel.selectedArea.value = ""
+            binding.diaryAccount.setText("", false)
+            binding.diaryArea.setText("", false)
+            binding.diarySwipeRefresh.isRefreshing = false
         }
 
         return root
