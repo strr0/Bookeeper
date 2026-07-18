@@ -15,10 +15,12 @@ import com.example.bookkeeper.databinding.FragmentDashboardBinding
 import com.example.bookkeeper.ui.adapter.DigitAdapter
 import com.example.bookkeeper.ui.adapter.LotteryAdapter
 import com.example.bookkeeper.ui.adapter.ZodiacAdapter
+import com.example.bookkeeper.ui.component.LotteryEditDialog
 import com.example.bookkeeper.ui.viewmodel.DashboardViewModel
 import com.example.bookkeeper.util.DateUtil
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class DashboardFragment : Fragment() {
 
@@ -38,12 +40,12 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.dashboardDateBtn.text = DateUtil.formatDate()
+        binding.dashboardDateBtn.text = DateUtil.formatDate(Date(dashboardViewModel.selectedDate.value))
 
         binding.dashboardDateBtn.setOnClickListener {
             val datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText(R.string.common_date_select)
-                .setSelection(DateUtil.getAndroidTimestamp(binding.dashboardDateBtn.text.toString(), DateUtil.dateFormatter))
+                .setSelection(DateUtil.getAndroidTimestamp(dashboardViewModel.selectedDate.value))
                 .build()
             datePicker.show(childFragmentManager, "date_picker")
             datePicker.addOnPositiveButtonClickListener { selection ->
@@ -53,12 +55,23 @@ class DashboardFragment : Fragment() {
             }
         }
 
+        isHk = "hk".equals(dashboardViewModel.selectedArea.value)
+        binding.dashboardAreaChip.setText(if (isHk) R.string.common_area_hk else R.string.common_area_mo)
+
         binding.dashboardAreaChip.setOnClickListener {
             isHk = !isHk
             binding.dashboardAreaChip.setText(if (isHk) R.string.common_area_hk else R.string.common_area_mo)
             dashboardViewModel.selectedArea.value = if (isHk) "hk" else "mo"
         }
 
+        val lotteryClick = { _: View ->
+            LotteryEditDialog.show(requireContext()) { list ->
+                viewLifecycleOwner.lifecycleScope.launch {
+                    dashboardViewModel.saveLotteryDetail(list)
+                }
+            }
+            true
+        }
         val lotteryAdapter = LotteryAdapter(requireContext())
         binding.lotteryList.adapter = lotteryAdapter
         viewLifecycleOwner.lifecycleScope.launch {
@@ -66,16 +79,21 @@ class DashboardFragment : Fragment() {
                 dashboardViewModel.lotteryDetails.collect { records ->
                     lotteryAdapter.updateRecords(records)
                     lotteryAdapter.notifyDataSetChanged()
+                    if(records.isNotEmpty()) {
+                        binding.textLottery.setOnLongClickListener(null)
+                    } else {
+                        binding.textLottery.setOnLongClickListener(lotteryClick)
+                    }
                 }
             }
         }
 
-        val digitAdapter = DigitAdapter(requireContext(), emptyList())
-        binding.digitList.adapter = digitAdapter
         viewLifecycleOwner.lifecycleScope.launch {
             dashboardViewModel.loadDefaultDigits()
-            digitAdapter.setRecords(dashboardViewModel.defaultDigits)
-            digitAdapter.notifyDataSetChanged()
+            val digitAdapter = DigitAdapter(requireContext(), dashboardViewModel.defaultDigits)
+            binding.digitList.adapter = digitAdapter
+            binding.digitListEmpty.visibility = View.GONE
+            binding.digitList.visibility = View.VISIBLE
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 dashboardViewModel.digits.collect { records ->
                     digitAdapter.updateRecords(records)
@@ -84,12 +102,12 @@ class DashboardFragment : Fragment() {
             }
         }
 
-        val zodiacAdapter = ZodiacAdapter(requireContext(), emptyList())
-        binding.zodiacList.adapter = zodiacAdapter
         viewLifecycleOwner.lifecycleScope.launch {
             dashboardViewModel.loadDefaultZodiacs()
-            zodiacAdapter.setRecords(dashboardViewModel.defaultZodiacs)
-            zodiacAdapter.notifyDataSetChanged()
+            val zodiacAdapter = ZodiacAdapter(requireContext(), dashboardViewModel.defaultZodiacs)
+            binding.zodiacList.adapter = zodiacAdapter
+            binding.zodiacListEmpty.visibility = View.GONE
+            binding.zodiacList.visibility = View.VISIBLE
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 dashboardViewModel.zodiacs.collect { records ->
                     zodiacAdapter.updateRecords(records)

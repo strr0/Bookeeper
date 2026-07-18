@@ -16,7 +16,7 @@ class ContactRepository(application: Application) {
 
     fun listAllAccounts() = amsAccountDao.listAllAccounts()
 
-    fun listAccRules(accId: Int): Flow<List<RmsRuleVo>> = rmsRuleDao.listAccRules(accId)
+    fun listAccRules(accId: Long): Flow<List<RmsRuleVo>> = rmsRuleDao.listAccRules(accId)
 
     suspend fun saveAccount(record: AmsAccount) = amsAccountDao.saveAccount(record)
 
@@ -24,5 +24,5 @@ class ContactRepository(application: Application) {
 
     suspend fun removeAccount(record: AmsAccount) = amsAccountDao.removeAccount(record)
 
-    fun listAccountDetails(accId: Int) = amsAccountDao.listAccountDetails(accId)
+    fun listAccountDetails(accId: Long) = amsAccountDao.listAccountDetails(accId)
 }

@@ -35,7 +35,7 @@ class DiaryDetailFragment : Fragment() {
         val root: View = binding.root
 
         val bundle = arguments
-        val billId = bundle!!.getInt("billId")
+        val billId = bundle!!.getLong("billId")
 
         viewLifecycleOwner.lifecycleScope.launch {
             dashboardViewModel.loadDefaultDigits()

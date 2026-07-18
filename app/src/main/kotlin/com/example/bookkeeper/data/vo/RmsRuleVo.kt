@@ -2,19 +2,19 @@ package com.example.bookkeeper.data.vo
 
 import androidx.room.ColumnInfo
 import java.math.BigDecimal
-import java.util.*
+import java.util.Date
 
 class RmsRuleVo {
     /**
      * 主键
      */
-    var id: Int = 0
+    var id: Long = 0L
 
     /**
      * 账户ID
      */
     @ColumnInfo(name = "acc_id")
-    var accId: Int = 0
+    var accId: Long = 0L
 
     /**
      * 名称

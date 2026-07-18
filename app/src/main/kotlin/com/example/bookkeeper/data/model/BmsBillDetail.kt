@@ -11,13 +11,13 @@ class BmsBillDetail {
      * 主键
      */
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0L
 
     /**
      * 账单ID
      */
     @ColumnInfo(name = "bill_id")
-    var billId: Int? = null
+    var billId: Long? = null
 
     /**
      * 类型
@@ -27,7 +27,7 @@ class BmsBillDetail {
     /**
      * 项
      */
-    var item: Int? = null
+    var item: Long? = null
 
     /**
      * 金额

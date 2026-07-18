@@ -20,5 +20,5 @@ interface AmsAccountDao {
     suspend fun removeAccount(record: AmsAccount)
 
     @Query("select * from ams_account_detail where acc_id=:accId")
-    fun listAccountDetails(accId: Int): Flow<List<AmsAccountDetail>>
+    fun listAccountDetails(accId: Long): Flow<List<AmsAccountDetail>>
 }

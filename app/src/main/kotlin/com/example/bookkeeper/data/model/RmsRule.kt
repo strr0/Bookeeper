@@ -12,7 +12,7 @@ class RmsRule {
      * 主键
      */
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0L
 
     /**
      * 名称

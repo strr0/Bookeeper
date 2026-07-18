@@ -22,6 +22,7 @@ import com.example.bookkeeper.ui.viewmodel.DiaryViewModel
 import com.example.bookkeeper.util.DateUtil
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class DiaryFragment : Fragment() {
 
@@ -39,12 +40,12 @@ class DiaryFragment : Fragment() {
         _binding = FragmentDiaryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.diaryDateBtn.text = DateUtil.formatDate()
+        binding.diaryDateBtn.text = DateUtil.formatDate(Date(diaryViewModel.selectedDate.value))
 
         binding.diaryDateBtn.setOnClickListener {
             val datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText(R.string.common_date_select)
-                .setSelection(DateUtil.getAndroidTimestamp(binding.diaryDateBtn.text.toString(), DateUtil.dateFormatter))
+                .setSelection(DateUtil.getAndroidTimestamp(diaryViewModel.selectedDate.value))
                 .build()
             datePicker.show(childFragmentManager, "date_picker")
             datePicker.addOnPositiveButtonClickListener { selection ->
@@ -79,7 +80,7 @@ class DiaryFragment : Fragment() {
         binding.diaryList.adapter = diaryAdapter
         diaryAdapter.setOnChevronClickListener { billId ->
             val bundle = Bundle().apply {
-                putInt("billId", billId)
+                putLong("billId", billId)
             }
             findNavController(binding.root).navigate(R.id.navigation_diary_detail, bundle)
         }

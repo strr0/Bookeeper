@@ -6,23 +6,23 @@ class LmsLotteryDetailVo {
     /**
      * 主键
      */
-    var id: Int = 0
+    var id: Long = 0L
 
     /**
      * 彩票ID
      */
     @ColumnInfo(name = "lot_id")
-    var lotId: Int? = null
+    var lotId: Long? = null
 
     /**
      * 数字
      */
-    var num: Int? = null
+    var num: Long? = null
 
     /**
      * 生肖
      */
-    var zod: Int? = null
+    var zod: Long? = null
 
     /**
      * 排序

@@ -11,12 +11,12 @@ class DmsZodiac {
      * 主键
      */
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0L
 
     /**
      * 编码
      */
-    var code: String? = null
+    var code: Long? = null
 
     /**
      * 名称

@@ -9,13 +9,13 @@ class RmsRuleRel {
      * 规则ID
      */
     @ColumnInfo(name = "rule_id")
-    var ruleId: Int = 0
+    var ruleId: Long = 0L
 
     /**
      * 账户ID
      */
     @ColumnInfo(name = "acc_id")
-    var accId: Int = 0
+    var accId: Long = 0L
 
     /**
      * 倍率

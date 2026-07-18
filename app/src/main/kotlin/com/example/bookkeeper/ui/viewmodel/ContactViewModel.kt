@@ -12,7 +12,7 @@ class ContactViewModel(private val contactRepository: ContactRepository) : ViewM
 
     val accounts: Flow<List<AmsAccount>> = contactRepository.listAllAccounts()
 
-    fun listAccountDetails(accId: Int) = contactRepository.listAccountDetails(accId)
+    fun listAccountDetails(accId: Long) = contactRepository.listAccountDetails(accId)
 
     companion object {
         val Factory = viewModelFactory {

@@ -18,6 +18,9 @@
     <string name="title_lottery">中奖号码</string>
     <string name="title_digit">数字</string>
     <string name="title_zodiac">生肖</string>
+    <string name="dashboard_loading">加载中…</string>
+    <string name="lottery_input">请输入本期号码</string>
+    <string name="lottery_input_tip">请输入完整号码</string>
     <string name="common_area_hk">香港</string>
     <string name="common_area_mo">澳门</string>
 

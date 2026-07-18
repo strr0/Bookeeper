@@ -17,7 +17,7 @@ class DiaryRepository(application: Application) {
     private val amsAccountDao: AmsAccountDao = _amsAccountDao!!
     private val bmsBillDao: BmsBillDao = _bmsBillDao!!
 
-    fun listBills(date: Long, accId: Int, area: String): Flow<List<BmsBillVo>> {
+    fun listBills(date: Long, accId: Long, area: String): Flow<List<BmsBillVo>> {
         val args = mutableListOf<Any>()
         val sql = StringBuilder("select t1.*,t2.name acc_name from bms_bill t1 inner join ams_account t2 on t1.acc_id=t2.id where 1=1 ")
         if (date != 0L) {
@@ -25,7 +25,7 @@ class DiaryRepository(application: Application) {
             args.add(date)
             args.add(DateUtil.getEndDayTimestamp(date))
         }
-        if (accId != 0) {
+        if (accId != 0L) {
             sql.append("and t1.acc_id = ? ")
             args.add(accId)
         }
@@ -40,5 +40,5 @@ class DiaryRepository(application: Application) {
 
     fun listAllAccounts(): Flow<List<AmsAccount>> = amsAccountDao.listAllAccounts()
 
-    fun listBillDetails(billId: Int): Flow<List<BmsBillDetailVo>> = bmsBillDao.listBillDetails(billId)
+    fun listBillDetails(billId: Long): Flow<List<BmsBillDetailVo>> = bmsBillDao.listBillDetails(billId)
 }

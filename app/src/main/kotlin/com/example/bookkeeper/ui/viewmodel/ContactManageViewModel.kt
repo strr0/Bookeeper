@@ -13,7 +13,7 @@ class ContactManageViewModel(private val contactRepository: ContactRepository) :
 
     val accounts: Flow<List<AmsAccount>> = contactRepository.listAllAccounts()
 
-    fun listAccRules(accId: Int): Flow<List<RmsRuleVo>> {
+    fun listAccRules(accId: Long): Flow<List<RmsRuleVo>> {
         return contactRepository.listAccRules(accId)
     }
 

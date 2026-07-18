@@ -8,13 +8,13 @@ class BmsBillDetailVo {
     /**
      * 主键
      */
-    var id: Int? = null
+    var id: Long? = null
 
     /**
      * 账单ID
      */
     @ColumnInfo(name = "bill_id")
-    var billId: Int? = null
+    var billId: Long? = null
 
     /**
      * 类型
@@ -24,7 +24,7 @@ class BmsBillDetailVo {
     /**
      * 项
      */
-    var item: Int? = null
+    var item: Long? = null
 
     /**
      * 金额

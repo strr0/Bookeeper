@@ -10,6 +10,12 @@
 
     <color name="orange">#FFFFA500</color>
     <color name="green">#FF14B8A6</color>
+    
+    <color name="red_50">#FFEBEE</color>
+    <color name="red_100">#F8CDCF</color>
+    <color name="red_150">#F2AFB0</color>
+    <color name="red_200">#EB9191</color>
+    <color name="red_250">#E57373</color>
 
     <color name="avatar_color_1">#FF6366F1</color>
     <color name="avatar_color_2">#FF8B5CF6</color>

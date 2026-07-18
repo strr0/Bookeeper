@@ -5,21 +5,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookkeeper.R
 import com.example.bookkeeper.data.vo.DmsZodiacVo
+import com.google.android.material.card.MaterialCardView
 import java.math.BigDecimal
 
-class ZodiacAdapter(context: Context?, records: List<DmsZodiacVo>) : RecyclerView.Adapter<ZodiacAdapter.ViewHolder>() {
+class ZodiacAdapter(context: Context?, private var records: List<DmsZodiacVo>) : RecyclerView.Adapter<ZodiacAdapter.ViewHolder>() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var records: List<DmsZodiacVo> = records
-
-    fun setRecords(records: List<DmsZodiacVo>) {
-        this.records = records
-    }
+    private val context: Context = context!!
+    private var lv1: BigDecimal = BigDecimal.ZERO
+    private var lv2: BigDecimal = BigDecimal.ZERO
+    private var lv3: BigDecimal = BigDecimal.ZERO
+    private var lv4: BigDecimal = BigDecimal.ZERO
+    private var lv5: BigDecimal = BigDecimal.ZERO
 
     fun updateRecords(records: List<DmsZodiacVo>) {
         val recordMap = records.associateBy { it.code }
+        if (records.isNotEmpty()) {
+            val max = records.maxBy { it.amount }.amount
+            this.lv1 = max.multiply(BigDecimal("0.2"))
+            this.lv2 = max.multiply(BigDecimal("0.4"))
+            this.lv3 = max.multiply(BigDecimal("0.6"))
+            this.lv4 = max.multiply(BigDecimal("0.8"))
+            this.lv5 = max
+        }
         this.records.forEach {
             it.amount = BigDecimal.ZERO
             val _record = recordMap[it.code]
@@ -39,10 +50,33 @@ class ZodiacAdapter(context: Context?, records: List<DmsZodiacVo>) : RecyclerVie
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val record = records[position]
         holder.value.text = record.name.toString()
+        if (record.amount.compareTo(BigDecimal.ZERO) > 0) {
+            holder.value.setTextColor(ContextCompat.getColor(context, R.color.white))
+            holder.value.background = ContextCompat.getDrawable(context, backgroudColorFor(record.amount))
+        }
     }
 
+    private fun backgroudColorFor(value: BigDecimal): Int {
+        if (value.compareTo(lv1) <= 0) {
+            return R.color.red_50
+        }
+        if (value.compareTo(lv2) <= 0) {
+            return R.color.red_100
+        }
+        if (value.compareTo(lv3) <= 0) {
+            return R.color.red_150
+        }
+        if (value.compareTo(lv4) <= 0) {
+            return R.color.red_200
+        }
+        if (value.compareTo(lv5) <= 0) {
+            return R.color.red_250
+        }
+        return R.color.common_card_bg
+    }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val card: MaterialCardView = view as MaterialCardView
         val value: TextView = view.findViewById(R.id.zodiac_value)
     }
 }

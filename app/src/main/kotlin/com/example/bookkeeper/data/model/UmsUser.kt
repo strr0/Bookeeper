@@ -11,7 +11,7 @@ class UmsUser {
      * 主键
      */
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0L
 
     /**
      * 用户名

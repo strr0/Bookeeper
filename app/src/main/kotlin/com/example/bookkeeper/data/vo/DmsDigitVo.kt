@@ -8,17 +8,17 @@ class DmsDigitVo {
     /**
      * 主键
      */
-    var id: Int? = null
+    var id: Long? = null
 
     /**
      * 数字
      */
-    var num: Int? = null
+    var num: Long? = null
 
     /**
      * 生肖
      */
-    var zod: Int? = null
+    var zod: Long? = null
 
     /**
      * 颜色
@@ -56,5 +56,5 @@ class DmsDigitVo {
     /**
      * 金额
      */
-    var amount: BigDecimal? = null
+    var amount: BigDecimal = BigDecimal.ZERO
 }

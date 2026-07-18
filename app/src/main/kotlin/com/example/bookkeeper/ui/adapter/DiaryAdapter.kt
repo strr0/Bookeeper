@@ -16,14 +16,14 @@ class DiaryAdapter(context: Context?) : RecyclerView.Adapter<DiaryAdapter.ViewHo
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private val appContext: Context = context!!.applicationContext
     private val records: MutableList<BmsBillVo> = ArrayList()
-    private var onChevronClickListener: ((Int) -> Unit)? = null
+    private var onChevronClickListener: ((Long) -> Unit)? = null
 
     fun setRecords(records: List<BmsBillVo>) {
         this.records.clear()
         this.records.addAll(records)
     }
 
-    fun setOnChevronClickListener(listener: (Int) -> Unit) {
+    fun setOnChevronClickListener(listener: (Long) -> Unit) {
         onChevronClickListener = listener
     }
 

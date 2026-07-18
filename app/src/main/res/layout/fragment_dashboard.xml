@@ -128,12 +128,22 @@
                             android:id="@+id/digit_list"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             android:paddingTop="@dimen/dashboard_section_item_padding_top"
                             android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"
                             android:clipToPadding="false"
                             android:nestedScrollingEnabled="false"
                             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                             app:spanCount="6"/>
+
+                    <TextView
+                            android:id="@+id/digit_list_empty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/dashboard_loading"
+                            android:paddingTop="@dimen/dashboard_section_item_padding_top"
+                            android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -167,12 +177,22 @@
                             android:id="@+id/zodiac_list"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             android:paddingTop="@dimen/dashboard_section_item_padding_top"
                             android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"
                             android:clipToPadding="false"
                             android:nestedScrollingEnabled="false"
                             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                             app:spanCount="6"/>
+
+                    <TextView
+                            android:id="@+id/zodiac_list_empty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/dashboard_loading"
+                            android:paddingTop="@dimen/dashboard_section_item_padding_top"
+                            android:paddingBottom="@dimen/dashboard_section_item_padding_bottom"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

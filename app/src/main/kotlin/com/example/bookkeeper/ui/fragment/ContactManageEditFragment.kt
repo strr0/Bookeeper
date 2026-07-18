@@ -97,7 +97,7 @@ class ContactManageEditFragment : Fragment() {
                 if (id.isEmpty()) {
                     contactManageViewModel.save(record)
                 } else {
-                    record.id = id.toInt()
+                    record.id = id.toLong()
                     contactManageViewModel.update(record)
                 }
             }
@@ -113,7 +113,7 @@ class ContactManageEditFragment : Fragment() {
                     val id = idText.text.toString()
                     if (id.isNotEmpty()) {
                         val record = AmsAccount()
-                        record.id = id.toInt()
+                        record.id = id.toLong()
                         viewLifecycleOwner.lifecycleScope.launch {
                             contactManageViewModel.remove(record)
                         }
@@ -146,7 +146,7 @@ class ContactManageEditFragment : Fragment() {
             }
             viewLifecycleOwner.lifecycleScope.launch {
                 viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    contactManageViewModel.listAccRules(id.toInt()).collect { records ->
+                    contactManageViewModel.listAccRules(id.toLong()).collect { records ->
                         adapter.setRecords(records)
                         adapter.notifyDataSetChanged()
                     }

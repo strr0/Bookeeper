@@ -19,5 +19,5 @@ interface BmsBillDao {
             "from bms_bill_detail t1 " +
             "inner join bms_bill t2 on t1.bill_id=t2.id " +
             "where bill_id=:billId")
-    fun listBillDetails(billId: Int): Flow<List<BmsBillDetailVo>>
+    fun listBillDetails(billId: Long): Flow<List<BmsBillDetailVo>>
 }

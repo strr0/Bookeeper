@@ -37,7 +37,7 @@ class ContactFragment : Fragment() {
         binding.contactList.adapter = adapter
         adapter.setOnChevronClickListener { record ->
             val bundle = Bundle().apply {
-                putInt("accId", record.id)
+                putLong("accId", record.id)
             }
             findNavController(binding.root).navigate(R.id.navigation_contact_detail, bundle)
         }

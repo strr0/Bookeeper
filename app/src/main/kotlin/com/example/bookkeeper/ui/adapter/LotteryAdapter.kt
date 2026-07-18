@@ -13,12 +13,20 @@ import com.google.android.material.card.MaterialCardView
 
 class LotteryAdapter(context: Context?) : RecyclerView.Adapter<LotteryAdapter.ViewHolder>() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private val records: MutableList<LmsLotteryDetailVo> = (1..7).map { LmsLotteryDetailVo().apply {
+    private val records: List<LmsLotteryDetailVo> = (1..7).map { LmsLotteryDetailVo().apply {
         seq = it
-        num = it
+        num = 0
     } }.toMutableList()
 
     fun updateRecords(records: List<LmsLotteryDetailVo>) {
+        this.records.forEach {
+            it.id = 0L
+            it.lotId = 0L
+            it.num = 0L
+            it.zod = 0L
+            it.area = null
+            it.color = null
+        }
         val recordMap = this.records.associateBy { it.seq }
         records.forEach {
             val _record = recordMap[it.seq]

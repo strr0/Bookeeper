@@ -13,7 +13,8 @@ class DateUtil {
     companion object {
         val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val simpleDateFormatter = SimpleDateFormat("yyyy-MM-dd")
+        val simpleDateTimeFormatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val oneDayMillis = 86399999L
 
         fun formatDate(): String? {
@@ -22,6 +23,10 @@ class DateUtil {
 
         fun formatDate(date: LocalDate): String? {
             return date.format(dateFormatter)
+        }
+
+        fun formatDate(date: Date?): String? {
+            return date?.let { simpleDateFormatter.format(it) }
         }
 
         fun formatDateTime(): String? {
@@ -33,7 +38,7 @@ class DateUtil {
         }
 
         fun formatDateTime(date: Date?): String? {
-            return date?.let { simpleDateFormat.format(it) }
+            return date?.let { simpleDateTimeFormatter.format(it) }
         }
 
         fun parseDate(string: String): LocalDate? {
@@ -42,6 +47,10 @@ class DateUtil {
 
         fun parseDateTime(string: String): LocalDateTime? {
             return LocalDateTime.parse(string, dateTimeFormatter)
+        }
+
+        fun getTimestamp(): Long {
+            return getTimestamp(LocalDate.now())
         }
 
         fun getTimestamp(date: LocalDate): Long {
@@ -67,6 +76,10 @@ class DateUtil {
         fun getAndroidTimestamp(string: String, formatter: DateTimeFormatter): Long {
             val date = LocalDate.parse(string, formatter)
             return getTimestamp(date.atStartOfDay(), ZoneOffset.UTC)
+        }
+
+        fun getAndroidTimestamp(timestamp: Long): Long {
+            return timestamp + TimeZone.getDefault().rawOffset
         }
 
         fun getEndDayTimestamp(timestamp: Long): Long {

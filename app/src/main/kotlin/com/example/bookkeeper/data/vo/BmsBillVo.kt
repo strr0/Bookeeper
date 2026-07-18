@@ -8,13 +8,13 @@ class BmsBillVo {
     /**
      * 主键
      */
-    var id: Int = 0
+    var id: Long = 0L
 
     /**
      * 账户ID
      */
     @ColumnInfo(name = "acc_id")
-    var accId: Int? = null
+    var accId: Long? = null
 
     /**
      * 账户名称

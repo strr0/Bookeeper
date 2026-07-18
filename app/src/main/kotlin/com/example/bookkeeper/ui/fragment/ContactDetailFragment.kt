@@ -33,7 +33,7 @@ class ContactDetailFragment : Fragment() {
         val root: View = binding.root
 
         val bundle = arguments
-        val accId = bundle!!.getInt("accId")
+        val accId = bundle!!.getLong("accId")
 
         val adapter = ContactDetailAdapter(requireContext())
         binding.contactDetailList.adapter = adapter

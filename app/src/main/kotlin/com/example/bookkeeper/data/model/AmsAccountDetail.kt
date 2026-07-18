@@ -12,13 +12,13 @@ class AmsAccountDetail {
      * 主键
      */
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0L
 
     /**
      * 账户ID
      */
     @ColumnInfo(name = "acc_id")
-    var accId: Int? = null
+    var accId: Long? = null
 
     /**
      * 地区

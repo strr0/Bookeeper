@@ -8,6 +8,7 @@ import com.example.bookkeeper.data.model.AmsAccount
 import com.example.bookkeeper.data.repository.DiaryRepository
 import com.example.bookkeeper.data.vo.BmsBillDetailVo
 import com.example.bookkeeper.data.vo.BmsBillVo
+import com.example.bookkeeper.util.DateUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 
@@ -15,8 +16,8 @@ class DiaryViewModel(private val diaryRepository: DiaryRepository) : ViewModel()
 
     val accounts: Flow<List<AmsAccount>> = diaryRepository.listAllAccounts()
 
-    val selectedDate = MutableStateFlow(System.currentTimeMillis())
-    val selectedAccount = MutableStateFlow(0)
+    val selectedDate = MutableStateFlow(DateUtil.getTimestamp())
+    val selectedAccount = MutableStateFlow(0L)
     val selectedArea = MutableStateFlow("")
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -26,7 +27,7 @@ class DiaryViewModel(private val diaryRepository: DiaryRepository) : ViewModel()
         diaryRepository.listBills(date, account, area)
     }
 
-    fun listBillDetails(billId: Int): Flow<List<BmsBillDetailVo>> = diaryRepository.listBillDetails(billId)
+    fun listBillDetails(billId: Long): Flow<List<BmsBillDetailVo>> = diaryRepository.listBillDetails(billId)
 
     companion object {
         val Factory = viewModelFactory {

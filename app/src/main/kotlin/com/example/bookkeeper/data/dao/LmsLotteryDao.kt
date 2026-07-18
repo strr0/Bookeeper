@@ -1,7 +1,10 @@
 package com.example.bookkeeper.data.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
+import com.example.bookkeeper.data.model.LmsLottery
+import com.example.bookkeeper.data.model.LmsLotteryDetail
 import com.example.bookkeeper.data.vo.LmsLotteryDetailVo
 import kotlinx.coroutines.flow.Flow
 
@@ -14,4 +17,13 @@ interface LmsLotteryDao {
             "where t2.update_time between :beginTime and :endTime and t2.area=:area " +
             "order by t1.seq")
     fun listLotteryDetails(beginTime: Long, endTime: Long, area: String): Flow<List<LmsLotteryDetailVo>>
+
+    @Query("select * from lms_lottery where update_time between :beginTime and :endTime and area=:area")
+    suspend fun getLottery(beginTime: Long, endTime: Long, area: String): LmsLottery?
+
+    @Insert
+    suspend fun saveLottery(record: LmsLottery): Long
+
+    @Insert
+    suspend fun saveLotteryDetail(record: LmsLotteryDetail)
 }

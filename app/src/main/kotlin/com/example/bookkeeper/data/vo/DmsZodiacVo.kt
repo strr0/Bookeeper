@@ -8,12 +8,12 @@ class DmsZodiacVo {
     /**
      * 主键
      */
-    var id: Int? = null
+    var id: Long? = null
 
     /**
      * 编码
      */
-    var code: String? = null
+    var code: Long? = null
 
     /**
      * 名称
@@ -44,5 +44,5 @@ class DmsZodiacVo {
     /**
      * 金额
      */
-    var amount: BigDecimal? = null
+    var amount: BigDecimal = BigDecimal.ZERO
 }

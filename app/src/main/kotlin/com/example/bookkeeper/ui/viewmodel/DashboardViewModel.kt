@@ -4,10 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.bookkeeper.data.model.LmsLotteryDetail
 import com.example.bookkeeper.data.repository.DashboardRepository
 import com.example.bookkeeper.data.vo.DmsDigitVo
 import com.example.bookkeeper.data.vo.DmsZodiacVo
 import com.example.bookkeeper.data.vo.LmsLotteryDetailVo
+import com.example.bookkeeper.util.DateUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +21,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     var defaultDigits = emptyList<DmsDigitVo>()
     var defaultZodiacs = emptyList<DmsZodiacVo>()
 
-    val selectedDate = MutableStateFlow(System.currentTimeMillis())
+    val selectedDate = MutableStateFlow(DateUtil.getTimestamp())
     val selectedArea = MutableStateFlow("hk")
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -44,6 +46,20 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         if (defaultZodiacs.isEmpty()) {
             defaultZodiacs = dashboardRepository.listAllZodiacs()
         }
+    }
+
+    suspend fun saveLotteryDetail(nums: Array<Long>) : Boolean {
+        val digitMap = defaultDigits.associateBy { it.num!! }
+        val list = nums.mapIndexed { i, num ->
+            val zod = digitMap[num]?.zod ?: return false
+            LmsLotteryDetail().apply {
+                this.num = num
+                this.seq = i + 1
+                this.zod = zod
+            }
+        }
+        dashboardRepository.saveLotteryDetail(selectedDate.value, selectedArea.value, list)
+        return true
     }
 
     companion object {
